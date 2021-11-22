@@ -1,16 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package common;
+package com.syntax.ninocare.Commom;
 
-/**
- *
- * @author user
- */
 public class NotificationBean {
-    private String foodnot_id,food_name,food_decription,food_date, program_id,program_name,program_date,program_location,program_description,program_time;
+    private String foodnot_id,food_name,food_decription,food_date,program_id,program_name,program_date,program_location,program_description,program_time;
+
+    public String getFoodnot_id() {
+        return foodnot_id;
+    }
 
     public String getProgram_id() {
         return program_id;
@@ -59,10 +54,6 @@ public class NotificationBean {
     public void setProgram_time(String program_time) {
         this.program_time = program_time;
     }
- 
-    public String getFoodnot_id() {
-        return foodnot_id;
-    }
 
     public void setFoodnot_id(String foodnot_id) {
         this.foodnot_id = foodnot_id;
@@ -91,5 +82,4 @@ public class NotificationBean {
     public void setFood_date(String food_date) {
         this.food_date = food_date;
     }
-    
 }
