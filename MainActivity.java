@@ -1,4 +1,4 @@
-package com.example.dell.ninocare;
+package com.syntax.ninocare;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
