@@ -34,6 +34,47 @@
             out.print("failed");
         }
     }
+    
+    
+    
+    
+     //getphoneForgot
+    if (key.equals("getphoneForgot")) {
+        
+        System.out.print("hiii");
+//        String id = "",qry1="";
+//        String qry = "select UserId,Type from login where UserName='" + request.getParameter("email") + "' ";
+//        System.out.println("qry=" + qry);
+//        Iterator it = con.getData(qry).iterator();
+//        if (it.hasNext()) {
+//            Vector v = (Vector) it.next();
+//            id = v.get(0).toString();
+//            
+//            if(id.equals("asha")){
+//                qry1="SELECT  `Phone` FROM `regasha`WHERE `Email`='" + request.getParameter("email") + "'";
+//            }else if(id.equals("user")){
+//            qry1="SELECT `phone` FROM `tbl_user`WHERE `email`='" + request.getParameter("email") + "'";
+// 
+//            }else{
+//                out.print("failed");
+//            }
+//            
+//            System.out.println(qry1);
+//            
+//          Iterator it1 = con.getData(qry1).iterator();
+//        if (it1.hasNext()) {
+//            Vector v1 = (Vector) it1.next();
+//            String phone = v1.get(0).toString();   
+//            
+//           out.print(phone);
+//        }
+//             
+//           
+//        } else {
+//            System.out.println("else id=" + id);
+//            out.print("failed");
+//        }
+    }
 
     //add users
     if (key.equals("AshaAddUser")) {
@@ -48,10 +89,7 @@
         String dob = request.getParameter("dob");
         String address = request.getParameter("address");
         String image = request.getParameter("image");
-        
-        
-        System.out.println("Testttttt " + month);
-        
+        System.out.println("image" + image);
         String pass = new String(common.Utilities.OTP(6));
 
         Date date = new Date();
@@ -63,7 +101,7 @@
 
         if (con.putData(qry) > 0) {
             if (con.putData(qry1) > 0) {
-                out.print("successful");
+                out.print(pass);
             }
         } else {
             out.print("failed");
@@ -321,7 +359,7 @@
             System.out.println(info);
             out.println("failed");
         }
-    }
+       }
 
     if (key.equals("UserViewVacciDetails")) {
 
@@ -378,7 +416,7 @@
     if (key.equals("UserViewFoodDetails")) {
         String uid = request.getParameter("uid");
         String usertype = request.getParameter("usertype");
-        List<VacciBean> allVacciInfos = new ArrayList<VacciBean>();
+       List<VacciBean> allVacciInfos = new ArrayList<VacciBean>();
 
         String data = "";
         String info = "";
@@ -396,7 +434,7 @@
 //                System.out.println(fname);
 //                System.out.println(period);
 //                System.out.println(det);
-                VacciBean vbean = new VacciBean();
+ VacciBean vbean = new VacciBean();
                 vbean.setFoodName(v.get(0).toString());
                 vbean.setFoodPeriod(v.get(1).toString());
                 vbean.setFoodDetails(v.get(2).toString());
@@ -444,7 +482,7 @@
             while (it1.hasNext()) {
                 Vector v = (Vector) it1.next();
                 id += v.get(0) + ":";
-                users += v.get(1) + "               " + v.get(2) + ":";
+                users +="Name   : "+ v.get(1) + "\n House Number   :  " + v.get(2) + ":";
                 //hnumber+=v.get(2) + "";
                 System.out.println(id);
                 System.out.println(users);
@@ -464,7 +502,7 @@
         String uid = request.getParameter("uid");
         String users = "";
         String qry = "SELECT * FROM `tbl_user` WHERE uid=" + uid;
-        //System.out.println(qry);
+        System.out.println(qry);
         Iterator it1 = con.getData(qry).iterator();
         if (it1.hasNext()) {
             while (it1.hasNext()) {
@@ -482,8 +520,7 @@
 
 //start ashaDeleteUser
     if (key.equals("ashaDeleteUser")) {
-        String uid = request.getParameter("uid");
-        System.out.println("idddd is "+uid);
+        String uid = request.getParameter("userid");
         String qry = "Delete FROM tbl_user WHERE uid=" + uid;
         System.out.println(qry);
 
@@ -502,17 +539,17 @@
         List<NotificationBean> allInfos = new ArrayList<NotificationBean>();
 
         String station = request.getParameter("uid");
-        String aid = "";
-        String qry = " SELECT `aid` FROM `tbl_user` WHERE `uid`='" + station + "' ";
-        Iterator it3 = con.getData(qry).iterator();
-        if (it3.hasNext()) {
-            Vector v3 = (Vector) it3.next();
-            aid = v3.get(0).toString();
-        }
-
-        String str = "SELECT `foodid`,`foodname`,`descript`,`date` FROM `tbl_food_notification` where `aid`='" + aid + "'";
+        String aid="";
+        String qry=" SELECT `aid` FROM `tbl_user` WHERE `uid`='"+station+"' ";
+          Iterator it3 = con.getData(qry).iterator();
+          if(it3.hasNext()){
+              Vector v3 = (Vector) it3.next();
+              aid=v3.get(0).toString();
+          }
+        
+         String str = "SELECT `foodid`,`foodname`,`descript`,`date` FROM `tbl_food_notification` where `aid`='"+aid+"'";
 //        String str = "SELECT `foodid`,`foodname`,`descript`,`date` FROM `tbl_food_notification` ";
-
+        
         System.out.println("qry=" + str);
         String data = "";
         String infoall = "";
@@ -556,18 +593,18 @@
         List<NotificationBean> allInfos = new ArrayList<NotificationBean>();
 
         String station = request.getParameter("uid");
-        String aid = "";
-        String qry = " SELECT `aid` FROM `tbl_user` WHERE `uid`='" + station + "' ";
-        Iterator it3 = con.getData(qry).iterator();
-        if (it3.hasNext()) {
-            Vector v3 = (Vector) it3.next();
-            aid = v3.get(0).toString();
-        }
-
-        String str = "SELECT `progid`,`progname`,`pdate`,`plocation`,`ptime`,`description` FROM `tbl_program_notification` where `aid`='" + aid + "'";
+        String aid="";
+        String qry=" SELECT `aid` FROM `tbl_user` WHERE `uid`='"+station+"' ";
+          Iterator it3 = con.getData(qry).iterator();
+          if(it3.hasNext()){
+              Vector v3 = (Vector) it3.next();
+              aid=v3.get(0).toString();
+          }
+        
+        String str = "SELECT `progid`,`progname`,`pdate`,`plocation`,`ptime`,`description` FROM `tbl_program_notification` where `aid`='"+aid+"'";
         //String str = "SELECT `progid`,`progname`,`pdate`,`plocation`,`ptime`,`description` FROM `tbl_program_notification`";
         System.out.println("qry=" + str);
-
+        
         String data = "";
         String infoall = "";
         Iterator it = con.getData(str).iterator();
@@ -710,14 +747,14 @@
         String uid = request.getParameter("uid");
         String data = "";
         String qry = "SELECT * FROM `tbl_user` WHERE `uid`='" + uid + "'";
-        System.out.println(qry);
+        //System.out.println(qry);
         String monthcarry;
         Iterator it1 = con.getData(qry).iterator();
         if (it1.hasNext()) {
 
             Vector v = (Vector) it1.next();
             monthcarry = v.get(5).toString();
-            if (!v.get(5).equals("")) {
+            if (!v.get(5).equals("null")) {
                 LocalDate today = LocalDate.now();
                 LocalDate carrymonth = LocalDate.parse(v.get(5).toString());
                 System.out.println("carrymonth" + carrymonth + "  today" + today);
@@ -806,86 +843,47 @@
 
 //end UpdateNotiStatus
 
+//FetchVacinaions
 
-//strt check_email
-
-
-
-
-
-
-//end check_email
-
-if (key.equals("check_email")) {
-        String id = "";
-        String qry = "select UserId,Type from login where UserName='" + request.getParameter("email") + "' ";
-        String username = request.getParameter("uname");
-        System.out.println("qry=" + qry);
-        Iterator it = con.getData(qry).iterator();
-        if (it.hasNext()) {
-            
-            out.print("Existing");
-        } else {
-            System.out.println("else id=" + id);
-            out.print("failed");
-        }
-    }
-
-
-
-    if (key.equals("getphoneForgot")) {
-        String id = "",qry1="";
-        String qry = "select UserId,Type from login where UserName='" + request.getParameter("email") + "'";
-        String username = request.getParameter("uname");
-        System.out.println("qry=" + qry);
-        Iterator it = con.getData(qry).iterator();
-        if (it.hasNext()) {
-            Vector v = (Vector) it.next();
-            id = "" + v.get(1).toString();
-            
-            
-            if(id.equals("asha"))
-            {
-                qry1="SELECT `Phone` FROM `regasha` WHERE `Email`='" + request.getParameter("email") + "'";
-            }else  if(id.equals("user"))
-            {
-                qry1="SELECT `phone` FROM `tbl_user` WHERE `email`='" + request.getParameter("email") + "'";
-            } else{
-                
-                 out.print("failed");
-            }
-                  
-            
-            
-            Iterator it1 = con.getData(qry1).iterator();
-        if (it1.hasNext()) {
-            Vector v1 = (Vector) it1.next();
-             String phone = "" + v1.get(0).toString();
-             out.print(phone);
-        }
-            
-            
-           
-        } else {
-            System.out.println("else id=" + id);
-            out.print("failed");
-        }
-    }
-
-
-//changepass
-    if (key.equals("changepass")) {
-        String pass = request.getParameter("pass");
-        String mail = request.getParameter("email");
+    if (key.equals("FetchVacinaions")) {
         
-        String qry = "UPDATE `login` SET `Password`='" + pass+ "' WHERE `UserName`='" + mail + "' " ;
+        System.out.println("hhhhhhh");
+        
+        
+  
+        String uid = request.getParameter("uid");
+        String list = "",aid="";
+        
+        String qry = "SELECT * FROM `tbl_user` WHERE uid=" + uid;
         System.out.println(qry);
-
-        if (con.putData(qry) > 0) {
-
-            System.out.println("Deleted");
+        Iterator it1 = con.getData(qry).iterator();
+        if (it1.hasNext()) {
+           
+                Vector v = (Vector) it1.next();
+                
+                aid=v.get(1).toString();
+             
+                String qry2="SELECT * FROM `tbl_vacci_notification` WHERE `aid`='"+aid+"'";
+                 System.out.println(qry2);
+                
+                   Iterator it2 = con.getData(qry2).iterator();
+        if (it2.hasNext()) {
+                 while (it2.hasNext()) {
+                list +="Date    : "+ v.get(3) + "\nLnoction :" + v.get(4) + "\nTime : " + v.get(5) +"#";
+       
+                 }
+            
+            System.out.print(list);
+            out.print(list);
         } else {
             out.print("failed");
         }
     }
+
+    }
+
+
+
+
+
 %>

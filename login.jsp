@@ -25,6 +25,46 @@
 <link href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz:200,300,400,700" rel="stylesheet">
 <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 <!-- //web-fonts -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .bck{
+        
+        background: #eef9f0;
+    padding: 2em;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+    #logtable {
+    font-family: "Consolas", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 900;
+}
+#logtable td, #logtable th {
+    /*border: 1px solid #ddd;*/
+    padding: 8px;
+}
+.log {
+    background: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  
+}
+p.hd-title {
+    font-size: 26px;
+    font-family: 'Goudy Old Style', cursive;
+    /* font-family: Parisienne, cursive; */
+    text-align: center;
+    line-height: 1em;
+    color: sienna;
+    margin-bottom: -22px;
+}
+</style>
 </head>
 <body> 
 	<!-- header -->
@@ -44,7 +84,18 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">					
 					<ul class="nav navbar-nav navbar-left">
-<!-
+<!--						<li class="active"><a href="Admin.jsp" class="link link--yaku"><span>H</span><span>O</span><span>M</span><span>E</span></a></li>
+						<li><a href="addProject.jsp" class="link link--yaku"><span>A</span><span>D</span><span>D</span>  <span></span><span> P</span><span>R</span> <span>O</span><span>J</span><span>E</span><span>C</span><span>T</span><span>S</span></a></li>
+                                                <li><a href="regPanchayath.jsp" class="link link--yaku"><span>A</span><span>D</span><span>D</span>  <span></span><span> P</span><span>A</span> <span>N</span><span>C</span><span>H</span><span>A</span><span>Y</span><span>A</span><span>T</span><span>H</span></a></li>
+                                                <li><a href="viewProjects.jsp" class="link link--yaku"><span>V</span><span>I</span><span>E</span><span>W</span>  <span></span><span> P</span><span>R</span> <span>O</span><span>J</span><span>E</span><span>C</span><span>T</span><span>S</span></a></li>
+                                                <li><a href="viewreports.jsp" class="link link--yaku"><span>V</span><span>I</span><span>E</span><span>W</span>  <span></span><span> R</span><span>E</span> <span>P</span><span>P</span><span>O</span><span>R</span><span>T</span><span>S</span></a></li>
+						<li><a href="#" class="dropdown-toggle link link--yaku" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>P</span><span>A</span><span>G</span><span>E</span><span>S</span> <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="icons.html" class="link link--yaku"><span>W</span><span>E</span><span>B</span> <span>I</span><span>C</span><span>O</span><span>N</span><span>S</span></a></li>
+								<li><a href="codes.html" class="link link--yaku"><span>S</span><span>H</span><span>O</span><span>R</span><span>T</span> <span>C</span><span>O</span><span>D</span><span>E</span><span>S</span></a></li>
+							</ul>
+						</li>
+						<li><a href="" class="link link--yaku"><span></span></a></li> -->
                                                 <li><a href="login.jsp" class="link link--yaku"><span>L</span><span>O</span><span>G</span><span>I</span><span>N</span></a></li> 
                                                 
 					</ul>		
@@ -58,25 +109,37 @@
 	<!-- banner -->
 	
 	<!-- //services --> 
+        <div class="bck">
 	<div class="services agileits-w3layouts">
 		<div class="container">
-			<h3 class="agileits-title1">...LogIn...</h3>  
+			<!--<h3 class="agileits-title1">...LogIn...</h3>-->  
 				<center>
+                                    <div class="log">
                                     <form action="process/succslogin.jsp" method="post">
-                                    <table id="cstable">
+                                        <center>
+                                            <br><br>
+                                            <p class="hd-title">LogIn</p><br><br>
+                                    <table id="logtable">
                                         <tr> <td align="center"> <input type="text" name="uname" class="form-control1edt" placeholder=" User Name" required=""></td></tr>
                                         <tr> <td align="center"> <input type="password" name="pass" class="form-control1edt" placeholder=" Password" required=""></td></tr>
                                         <tr> <td  align="center"> <input type="submit" value="Login" id="btn"></td></tr>
+                                       
+                                
+                          
                                     </table>
+                                            <br><br>
+                                        </center>
                                     </form>
+                                        </div>
                                         <br><br><br><br><br><br><br><br><br><br>
     </center>
 				<div class="clearfix"> </div>
 			  
 		</div>
 	</div>
+        </div>
 	<!-- //services --> 
-
+	
 	<!-- start-smooth-scrolling -->
 	<script type="text/javascript" src="../js/move-top.js"></script>
 	<script type="text/javascript" src="../js/easing.js"></script>	
